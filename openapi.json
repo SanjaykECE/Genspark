@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://genspark-23b1.onrender.com/"
+      "url": "https://genspark-23b1.onrender.com"
     }
   ],
   "components": {
@@ -47,7 +47,7 @@
               "schema": {
                 "type": "object",
                 "example": {
-                  "email": "surya.m2021ecec@sece.ac.in"
+                  "email": "sanjay.k2021ecec@sece.ac.in"
                 }
               }
             }
@@ -74,7 +74,7 @@
                 "type": "object",
                 "example": {
                   "name": "sanjay",
-                  "email": "surya.m2021ecec@sece.ac.in",
+                  "email": "sanjay.k2021ecec@sece.ac.in",
                   "password": "12345",
                   "otp": 986728
                 }
@@ -102,7 +102,7 @@
               "schema": {
                 "type": "object",
                 "example": {
-                  "email": "surya.m2021ecec@sece.ac.in",
+                  "email": "sanjay.k2021ecec@sece.ac.in",
                   "password": "12345"
                 }
               }
@@ -123,22 +123,6 @@
       "get": {
         "tags": ["default"],
         "summary": "refreshToken",
-        "security": [
-          {
-            "bearerAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            },
-            "example": "Bearer",
-            "required": true
-          }
-        ],
         "responses": {
           "200": {
             "description": "Successful response",
@@ -288,7 +272,7 @@
             "schema": {
               "type": "integer"
             },
-            "example": "1000"
+            "example": "100000"
           },
           {
             "name": "category",
@@ -296,7 +280,7 @@
             "schema": {
               "type": "string"
             },
-            "example": "smartphones"
+            "example": "Electronics"
           }
         ],
         "responses": {
@@ -327,38 +311,6 @@
                     {
                       "productId": "663b6652bd582c7de21d6404",
                       "quantity": 2
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful response",
-            "content": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/order": {
-      "post": {
-        "tags": ["default"],
-        "summary": "placeOrder",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "example": {
-                  "products": [
-                    {
-                      "productId": "663b6652bd582c7de21d63f5",
-                      "quantity": 1
                     }
                   ]
                 }
