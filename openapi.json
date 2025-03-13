@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:5001"
+      "url": "https://genspark-23b1.onrender.com/"
     }
   ],
   "components": {

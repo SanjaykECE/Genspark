@@ -22,9 +22,9 @@ Welcome to the backend repository for our Ecommerce Application! This repository
 
 The API endpoints are documented using Swagger. After starting the server, you can access the Swagger UI documentation by navigating to the following URL in your web browser:
 
-https://e-commerce-adya-3.onrender.com/apis-adya
+https://genspark-23b1.onrender.com/apis/
 
-## Installation
+## To run locally:
 
 1. _Clone the repository_:
 
