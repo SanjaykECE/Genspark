@@ -1,0 +1,397 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "E-commerce",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5001"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/load": {
+      "get": {
+        "tags": ["default"],
+        "summary": "loadProducts",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/user/sendotp": {
+      "post": {
+        "tags": ["default"],
+        "summary": "sendOTP",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "surya.m2021ecec@sece.ac.in"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/user/signup": {
+      "post": {
+        "tags": ["default"],
+        "summary": "signup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "sanjay",
+                  "email": "surya.m2021ecec@sece.ac.in",
+                  "password": "12345",
+                  "otp": 986728
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": ["default"],
+        "summary": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "surya.m2021ecec@sece.ac.in",
+                  "password": "12345"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/user/refresh": {
+      "get": {
+        "tags": ["default"],
+        "summary": "refreshToken",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Bearer",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/product": {
+      "post": {
+        "tags": ["default"],
+        "summary": "createProduct",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "productName": "Product1",
+                  "description": "Description of Product1",
+                  "price": 1000,
+                  "stock": 10,
+                  "category": "category name"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["default"],
+        "summary": "getAllProducts",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["default"],
+        "summary": "updateProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "productName": "Product1",
+                  "description": "Description of Product1",
+                  "price": 1000,
+                  "stock": 10,
+                  "category": "category name"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["default"],
+        "summary": "deleteProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "productName": "Product1"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/product/search/{name}": {
+      "get": {
+        "tags": ["default"],
+        "summary": "searchProducts",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "product name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/product/filter": {
+      "get": {
+        "tags": ["default"],
+        "summary": "filterProducts",
+        "parameters": [
+          {
+            "name": "min",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "500"
+          },
+          {
+            "name": "max",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "1000"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "smartphones"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/checkout": {
+      "post": {
+        "tags": ["default"],
+        "summary": "orderProduct",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "products": [
+                    {
+                      "productId": "663b6652bd582c7de21d63f5",
+                      "quantity": 1
+                    },
+                    {
+                      "productId": "663b6652bd582c7de21d6404",
+                      "quantity": 2
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/order": {
+      "post": {
+        "tags": ["default"],
+        "summary": "placeOrder",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "products": [
+                    {
+                      "productId": "663b6652bd582c7de21d63f5",
+                      "quantity": 1
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": ["default"],
+        "summary": "logout",
+        "requestBody": {
+          "content": {}
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
